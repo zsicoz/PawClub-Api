@@ -5,13 +5,15 @@ var db = require("./DB");
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const port = 3001;
+const port = process.env.PORT;
 
 
+app.get('/', function (req,res) {
+    res.send('Çalışıyor');
+})
 
-
-app.get("/UserCheck/:email/:password",db.UserCheck);
-app.get("/UserAdd/:name_surname/:email/:password/:user_type",db.UserAdd);
+app.get("/UserCheck/:username/:password",db.UserCheck);
+app.post("/UserAdd",db.UserAdd);
 
 
 

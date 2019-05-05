@@ -1,4 +1,11 @@
-{"dependencies":{
+
+{
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log(\"Başarılı\");",
+    "start": "node index.js"
+  },
+  "dependencies":{
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mssql": "^5.1.0"
