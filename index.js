@@ -5,19 +5,24 @@ var db = require("./DB");
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const port = process.env.PORT;
+const port = process.env.PORT || 3001;
 
 
 app.get('/', function (req,res) {
     res.send('Çalışıyor');
 })
 
+app.get('/', function (req,res) {
+    res.send('Bağlanıldı');
+});
 app.get("/UserCheck/:username/:password",db.UserCheck);
 app.post("/UserAdd",db.UserAdd);
+app.get('/ShelterList/:Country',db.ShelterList);
+app.get('/ShelterListCountry',db.ShelterListCountry);
 
 
 
 
 
 
-app.listen(port,(req,res) => console.log("Listening , Port : 3001"));
+app.listen(port,(req,res) => console.log("Listening , Port :"+port));

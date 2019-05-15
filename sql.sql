@@ -33,8 +33,13 @@ select * from tbl_Animal_Shelter
 select * from tbl_donate
 
 insert into tbl_user (Name_Surname,Email,[Password],User_Type,UserName) values ('Üsküdar Hayvan Barınağı','animalshelter@uskudar.bel.tr','123üsküdar','S','uskudarshelter')
-alter table tbl_user add ShelterId int REFERENCES tbl_Animal_Shelter(id);
+alter table tbl_Animal_Shelter alter column Shelter_Province NVARCHAR
 SELECT * from tbl_user
-delete from tbl_user where id = 12
+delete from tbl_user where id = 13
 EXEC sp_rename ‘TabloAdi.KolonAdi’, ‘YeniKolonAdi’, ‘COLUMN’;
 
+SELECT DATA_TYPE 
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE 
+     TABLE_NAME = 'tbl_Animal_Shelter' AND 
+     COLUMN_NAME = 'Shelter_Province'
