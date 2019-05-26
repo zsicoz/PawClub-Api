@@ -20,6 +20,9 @@ app.post("/UserAdd",db.UserAdd);
 app.get('/ShelterList/:Country',db.ShelterList);
 app.get('/ShelterListCountry',db.ShelterListCountry);
 
+app.post('/UserUpdateInfo',db.UserUpdateInfo);
+app.post('/UserDonateCreate',db.UserDonateCreate);
+
 
 
 
