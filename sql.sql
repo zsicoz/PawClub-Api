@@ -60,3 +60,5 @@ update tbl_user set Name_Surname='Erkan-Karacar',Email='erkan@gmail.com',Passwor
 select Shelter_Province from tbl_Animal_Shelter GROUP by Shelter_Province
 
 insert into tbl_Donate (Shelter_id,User_id,Donate_Date,Donate_Pay) values (13,2,GETDATE(),50)
+
+select S.id as tbl_Shelter_id, S.Shelter_Name, S.Shelter_Phone, S.Shelter_Province, D.id as Donate_id , D.Shelter_id , D.User_id ,CONVERT(VARCHAR(10), D.Donate_Date, 101) AS D.Donate_Date , D.Donate_Pay , D.Invoice , D.Shelter_Ok , D.Comment from tbl_Animal_Shelter S, tbl_donate D where D.Shelter_id = S.id and D.User_id = 21

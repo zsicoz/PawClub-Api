@@ -16,12 +16,14 @@ app.get('/', function (req,res) {
     res.send('Bağlanıldı');
 });
 app.get("/UserCheck/:username/:password",db.UserCheck);
-app.post("/UserAdd",db.UserAdd);
 app.get('/ShelterList/:Country',db.ShelterList);
 app.get('/ShelterListCountry',db.ShelterListCountry);
+app.get('/UserDonateList/:id',db.UserDonateList);
 
 app.post('/UserUpdateInfo',db.UserUpdateInfo);
 app.post('/UserDonateCreate',db.UserDonateCreate);
+app.post("/UserAdd",db.UserAdd);
+
 
 
 

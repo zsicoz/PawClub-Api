@@ -104,6 +104,24 @@ module.exports.UserDonateCreate = function (req,res) {
   });
 }
 
+module.exports.UserDonateList = function (req,res) {
+  sql.connect(config, function (err) {
+    if (err) console.log(err);
+    var request = new sql.Request();
+    request.query("select S.id as tbl_Shelter_id, S.Shelter_Name, S.Shelter_Phone, S.Shelter_Province, D.id as Donate_id , D.Shelter_id , D.User_id , D.Donate_Date , D.Donate_Pay , D.Invoice , D.Shelter_Ok , D.Comment from tbl_Animal_Shelter S, tbl_donate D where D.Shelter_id = S.id and D.User_id ="+req.params.id, function (err, recordset) {
+      if (err){
+        console.log(err)
+        res.send(err)
+      }else if(recordset.recordset == 'undefined'){
+        res.send("Tabloda Veri Yok");
+      }else{
+        res.send({DonateArrayList:recordset.recordset});
+      }
+      sql.close();
+    });
+  });
+}
+
 
 
 //http://localhost:3001/UserCheck/zsicoz/123zehra
