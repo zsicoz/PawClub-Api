@@ -27,15 +27,16 @@ Comment nvarchar(max) Null,
 );
 GO
 
-
+select * from tbl_donate
 select * from tbl_user
 select * from tbl_Animal_Shelter
 select * from tbl_donate
 
-insert into tbl_Animal_Shelter  values ('Kavacık Hayvan Barınağı','02178761232','Kavacık/Istanbul','Istanbul')
-alter table tbl_user add ProfilePhoto NVARCHAR(max)
+insert into tbl_user (Name_Surname,Email,[Password],User_Type,UserName,ShelterId)  values ('Kavacık-Hayvan-Barinagi','animalshelter@kavacik.bel.tr','123kavacik','S','kavacikshelter',17) 
+update tbl_user set email='zsicoz@st.medipol.edu.tr'  where id=14
+alter table tbl_donate add Admin_Ok bit
 SELECT * from tbl_user
-delete from tbl_user where id = 13
+delete from tbl_user where id=28
 EXEC sp_rename ‘TabloAdi.KolonAdi’, ‘YeniKolonAdi’, ‘COLUMN’;
 
 SELECT DATA_TYPE 
@@ -62,3 +63,10 @@ select Shelter_Province from tbl_Animal_Shelter GROUP by Shelter_Province
 insert into tbl_Donate (Shelter_id,User_id,Donate_Date,Donate_Pay) values (13,2,GETDATE(),50)
 
 select S.id as tbl_Shelter_id, S.Shelter_Name, S.Shelter_Phone, S.Shelter_Province, D.id as Donate_id , D.Shelter_id , D.User_id ,CONVERT(VARCHAR(10), D.Donate_Date, 101) AS D.Donate_Date , D.Donate_Pay , D.Invoice , D.Shelter_Ok , D.Comment from tbl_Animal_Shelter S, tbl_donate D where D.Shelter_id = S.id and D.User_id = 21
+
+
+
+
+select S.id as tbl_Shelter_id, S.Shelter_Name, S.Shelter_Phone, S.Shelter_Province, D.id as Donate_id , D.Shelter_id , D.User_id , D.Donate_Date , D.Donate_Pay , D.Invoice , D.Shelter_Ok , D.Comment from tbl_Animal_Shelter S, tbl_donate D where D.Shelter_id = S.id
+
+select D.id as id , S.id as Shelter_id , U.id as User_id , U.Name_Surname as NameAndSurname , D.Donate_Date as Donate_Date , D.Donate_Pay as Donate_Pay , D.Invoice as Invoice , D.Shelter_Ok as Shelter_Ok , D.Comment as Comment  from tbl_user U, tbl_donate D , tbl_Animal_Shelter S where U.id=D.User_id and D.Shelter_id=S.id and D.Shelter_id=18

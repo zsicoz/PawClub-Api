@@ -19,10 +19,14 @@ app.get("/UserCheck/:username/:password",db.UserCheck);
 app.get('/ShelterList/:Country',db.ShelterList);
 app.get('/ShelterListCountry',db.ShelterListCountry);
 app.get('/UserDonateList/:id',db.UserDonateList);
+app.get('/AdminDonateList',db.AdminDonateList);
+app.get('/ShelterDonateList/:id',db.ShelterDonateList);
 
 app.post('/UserUpdateInfo',db.UserUpdateInfo);
 app.post('/UserDonateCreate',db.UserDonateCreate);
 app.post("/UserAdd",db.UserAdd);
+app.post('/ShelterDonateInfo',db.ShelterDonateInfo);
+app.post('/AdminDonateInfo',db.AdminDonateInfo);
 
 
 
